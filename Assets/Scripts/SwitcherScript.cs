@@ -15,17 +15,20 @@ public class SwitcherScript : MonoBehaviour
 	
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		Debug.Log ("ENTER");
-		door.DoorOpen();
-		_switchOn.SetActive (true);
-		_switchOff.SetActive (false);
+		if (col.tag == "Player") 
+		{
+			door.DoorOpen ();
+			_switchOn.SetActive (true);
+			_switchOff.SetActive (false);
+		}
 	}
 
 	void OnTriggerExit2D (Collider2D col)
 	{
-		Debug.Log ("EXIT");
-		door.DoorClose();
-		_switchOn.SetActive (false);
-		_switchOff.SetActive (true);
+		if (col.tag == "Player") 
+		{
+			_switchOn.SetActive (false);
+			_switchOff.SetActive (true);
+		}
 	}
 }
